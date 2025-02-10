@@ -42,7 +42,16 @@ public protocol Logify {
     func logApiResponse(_ response: URLResponse?, data: Data?, showData: Bool)
 }
 
+
 public extension Logify {
+    /// Упрощенный метод для логгирования
+    /// - Parameters:
+    ///   - level: Уровень логгирования
+    ///   - category: Категория логов
+    ///   - message: Сообщение
+    ///   - function: Название вызываемой функции
+    ///   - file: Название файла, в котором описана функция
+    ///   - line: Строка кода
     func log(
         _ level: LogLevel,
         category: LogCategory,
@@ -54,10 +63,19 @@ public extension Logify {
         logMessage(level, category: category, message, function: function, file: file, line: line)
     }
     
+    /// Упрощенный метод для логгирования запросов
+    /// - Parameters:
+    ///   - request: API запрос
+    ///   - showBody: Отображение тела
     func logRequest(_ request: URLRequest, showBody: Bool = false) {
         logApiRequest(request, showBody: showBody)
     }
     
+    /// Упрощенный метод для логгирования ответов
+    /// - Parameters:
+    ///   - response: API ответ
+    ///   - data: Тело ответа
+    ///   - showData: Отображение тела
     func logResponse(_ response: URLResponse?, data: Data?, showData: Bool = false) {
         logApiResponse(response, data: data, showData: showData)
     }
